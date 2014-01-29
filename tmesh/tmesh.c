@@ -583,6 +583,12 @@ where OPTIONS are:\n\
     }
   }
 
+#ifdef LTDL_LIBRARY_PATH_DEFAULT
+  /* if the user did not provide a library path, put a sane default */
+  if (getenv("LTDL_LIBRARY_PATH") == NULL)
+    setenv("LTDL_LIBRARY_PATH", LTDL_LIBRARY_PATH_DEFAULT, 0);
+#endif
+
   /* initialize libtme: */
   (void) tme_init();
 
