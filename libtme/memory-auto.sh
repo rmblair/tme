@@ -96,6 +96,8 @@ EOF
 if $header; then
     cat <<EOF
 
+#include <limits.h>
+#include <stdint.h>
 /* macros: */
 
 /* the plain partial read internal macro: */
@@ -129,7 +131,7 @@ if $header; then
 
 /* this returns a mask of all-bits-one in given type: */
 #define _tme_memory_type_mask(type, shift)				\\
-  ((type) ((((type) 0) - ((type) 1)) shift))
+  ((type) (UINTMAX_MAX shift))
 
 EOF
 fi
