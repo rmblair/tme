@@ -44,8 +44,8 @@ _TME_RCSID("$Id: sun4-timer.c,v 1.3 2010/06/05 14:38:23 fredette Exp $");
 
 /* real sun4/4c timer bits: */
 #define TME_SUN4_32_TIMER_LIMIT		TME_BIT(31)
-#define	TME_SUN44C_TIMER_MASK		(0x7ffffc00)
-#define	TME_SUN4M_TIMER_MASK		(0x7ffffe00)
+#define	TME_SUN44C_TIMER_MASK		(0x7ffffc00U)
+#define	TME_SUN4M_TIMER_MASK		(0x7ffffe00U)
 
 /* define this to track interrupt rates, reporting once every N
    seconds: */
