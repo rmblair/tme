@@ -42,6 +42,7 @@ _TME_RCSID("$Id: posix-serial.c,v 1.11 2007/08/24 00:57:01 fredette Exp $");
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <termios.h>
 #include <sys/types.h>
 #include <sys/time.h>
@@ -937,7 +938,8 @@ TME_ELEMENT_SUB_NEW_DECL(tme_host_posix,serial) {
 	fd_in = fd_out = posix_openpt(O_RDWR | O_NONBLOCK);
 	if (fd_in != -1) {
 	  int serrno;
-	  if (grantpt(fd_in) == -1) {
+	  if (grantpt(fd_in) == -1
+        || unlockpt(fd_in) == -1) {
 bad:	     serrno = errno;
 	    (void)close(fd_in);
 	    (void)close(fd_out);
