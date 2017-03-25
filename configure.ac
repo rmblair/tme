@@ -32,12 +32,15 @@ dnl ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 dnl POSSIBILITY OF SUCH DAMAGE.
 
 dnl Checks that we are given a good source directory.
-AC_INIT(ic/m68k/m68k-impl.h)
-AC_CANONICAL_SYSTEM
-AM_INIT_AUTOMAKE(tme, 0.8)
+AC_INIT([tme], [0.8])
+AC_CONFIG_SRCDIR([ic/m68k/m68k-impl.h])
+AC_CONFIG_MACRO_DIR([m4],[libltdl/m4])
+AC_CONFIG_AUX_DIR([libltdl/config])
+AM_INIT_AUTOMAKE
+
 
 dnl Write configuration out to config.h through config.h.in.
-AM_CONFIG_HEADER(config.h)
+AM_CONFIG_HEADER([config.h])
 
 dnl Checks for programs.
 AC_PROG_CC
@@ -182,12 +185,12 @@ AC_MSG_RESULT($tme_raw_type)
 dnl Checks for X11.
 AC_PATH_XTRA
 
-dnl Checks for GTK.
-AM_PATH_GTK_2_0([], have_gtk=true, have_gtk=false)
-if $have_gtk; then
-  AC_DEFINE(HAVE_GTK, [], [Define if you are compiling with GTK.])
-  TME_HOSTS="${TME_HOSTS} gtk"
-fi
+dnl dnl Checks for GTK.
+dnl AM_PATH_GTK_2_0([], have_gtk=true, have_gtk=false)
+dnl if $have_gtk; then
+dnl   AC_DEFINE(HAVE_GTK, [], [Define if you are compiling with GTK.])
+dnl   TME_HOSTS="${TME_HOSTS} gtk"
+dnl fi
 
 dnl Characterize any graphics displays and remember the areas of
 dnl the smallest and largest screens.
@@ -604,13 +607,16 @@ if test "x${misc_hosts}" = xno; then
 fi
 
 dnl Configure for libtool.
-AC_LIBLTDL_INSTALLABLE
+
 AC_SUBST(INCLTDL)
 AC_SUBST(LIBLTDL)
-AC_LIBTOOL_DLOPEN
-AM_PROG_LIBTOOL
 AC_SUBST(LTLIBOBJS)
-AC_CONFIG_SUBDIRS(libltdl)
+
+LT_INIT([disable-shared,dlopen])
+LT_CONFIG_LTDL_DIR([libltdl])
+AC_SUBST([LIBTOOL_DEPS])
+LTDL_INIT([installable])
+
 TME_PREOPEN=
 if test $enable_shared = no; then
   TME_PREOPEN='`sort -u $(top_builddir)/tme-preopen.txt`'
@@ -674,15 +680,14 @@ if test "x$gen_tmeconfig_h" = xyes; then
   outfile=tmeconfig.h
   echo "$as_me: creating $outfile"
   cat <<TMEEOF > ${outfile}-tmp
-/* tmeconfig.h
- * 
- * This is an automatically generated file - please modify 'configure.in'.
- */
+/* tmeconfig.h */
+/* This is an automatically generated file - please modify 'configure.ac' */
 
 #ifndef _TMECONFIG_H
 #define _TMECONFIG_H
 
 TMEEOF
+
   (for word in HAVE_ TIME_ PROTO_ ALIGNOF_ SIZEOF_ WORDS_BIGENDIAN; do \
     grep $word config.h | sed 's/#define[ 	]\{1,\}/&_TME_/' ; \
   done) | sort | uniq >> ${outfile}-tmp
@@ -728,6 +733,7 @@ TMEEOF
 
 #endif /* !_TMECONFIG_H */
 TMEEOF
+
   if cmp -s ${outfile}-tmp $outfile; then
     echo "$as_me: $outfile is unchanged"
     rm -f ${outfile}-tmp
@@ -824,7 +830,7 @@ bus_size_max="$bus_size_max"
 ])
 
 dnl Writes files.
-AC_OUTPUT(Makefile
+AC_CONFIG_FILES([Makefile
 	  tme/Makefile
 	  tme/ic/Makefile
 	  tme/machine/Makefile
@@ -857,5 +863,5 @@ AC_OUTPUT(Makefile
           scsi/Makefile
           generic/Makefile
 	  tmesh/Makefile
-	  tools/Makefile)
-
+	  tools/Makefile])
+AC_OUTPUT
