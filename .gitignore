@@ -22,9 +22,15 @@ missing
 ylwrap
 
 # autotools-generated (both from Makefile.am + configure)
+configure
 Makefile
 Makefile.in
 stamp-h1
+m4/
+aclocal.m4
+autom4te.cache/
+libltdl/
+
 
 # generated from looking at libltdl/config.h
 libtme/shlibvar.h
