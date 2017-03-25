@@ -19,7 +19,6 @@ install-sh
 INSTALL
 ltmain.sh
 missing
-modules
 ylwrap
 
 # autotools-generated (both from Makefile.am + configure)
