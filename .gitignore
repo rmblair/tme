@@ -77,3 +77,7 @@ ic/sparc/sparc-vis-auto.c
 tme/recode-host.h
 tme/tme-plugins.txt
 tmesh/tmesh-input.c
+
+# FIXME: add real info files
+NEWS
+README
