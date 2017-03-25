@@ -12,7 +12,7 @@ tme_ic_m68k_la_SOURCES = m68k-opmap.c \
 	m68010.c \
 	m68020.c \
 	m6888x.c
-tme_ic_m68k_la_LDFLAGS = -module -version-info 0:0:0
+tme_ic_m68k_la_LDFLAGS = -rpath $(pkglibdir) -module -version-info 0:0:0
 tme_ic_m68k_la_LIBADD = $(top_builddir)/libtme/libtme.la \
 	$(top_builddir)/generic/libtme-generic.la \
 	$(top_builddir)/ic/ieee754/libtme-ieee754.la

@@ -15,7 +15,7 @@ tme_ic_sparc_la_SOURCES = \
 	stp103x.c \
 	cy7c601.c \
 	mb86900.c
-tme_ic_sparc_la_LDFLAGS = -module -version-info 0:0:0
+tme_ic_sparc_la_LDFLAGS = -rpath $(pkglibdir) -module -version-info 0:0:0
 tme_ic_sparc_la_LIBADD = $(top_builddir)/libtme/libtme.la \
 	$(top_builddir)/generic/libtme-generic.la \
 	$(top_builddir)/ic/ieee754/libtme-ieee754.la

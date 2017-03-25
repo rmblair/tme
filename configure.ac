@@ -612,7 +612,7 @@ AC_SUBST(INCLTDL)
 AC_SUBST(LIBLTDL)
 AC_SUBST(LTLIBOBJS)
 
-LT_INIT([disable-shared,dlopen])
+LT_INIT([disable-shared dlopen])
 LT_CONFIG_LTDL_DIR([libltdl])
 AC_SUBST([LIBTOOL_DEPS])
 LTDL_INIT([installable])
