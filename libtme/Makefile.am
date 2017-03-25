@@ -48,4 +48,4 @@ memory-auto.lo: memory-auto.h
 # is using:
 module.lo: shlibvar.h
 shlibvar.h: $(top_builddir)/libltdl/config.h
-	grep LTDL_SHLIBPATH_VAR $(top_builddir)/libltdl/config.h > $@
+	grep LT_MODULE_PATH_VAR $(top_builddir)/libltdl/config.h > $@

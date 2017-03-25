@@ -121,7 +121,7 @@ _tme_modules_find(const char *top_name,
     search_path = NULL;
     switch (pass) {
     case 1: search_path = getenv("LTDL_LIBRARY_PATH"); break;
-    case 2: search_path = getenv(LTDL_SHLIBPATH_VAR); break;
+    case 2: search_path = getenv(LT_MODULE_PATH_VAR); break;
     default: assert(FALSE);
     }
     if (search_path == NULL) {
