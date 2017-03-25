@@ -186,19 +186,19 @@ x) tme_raw_type=none ;;
 esac
 AC_MSG_RESULT($tme_raw_type)
 
-dnl Checks for X11.
-AC_PATH_XTRA
-# from https://lists.fedoraproject.org/pipermail/devel/2010-February/130614.html
-AC_CHECK_LIB(X11, XKeysymToString)
-
 # from https://autotools.io/pkgconfig/pkg_check_modules.html
 dnl Checks for GTK.
 AC_ARG_WITH([gtk], AS_HELP_STRING([--with-gtk], [Build with the GTK+ interface]))
-
 AS_IF(
   [test "x$with_gtk" = "xyes"],
   [
+    dnl Checks for X11.
+    AC_PATH_XTRA
+    # from https://lists.fedoraproject.org/pipermail/devel/2010-February/130614.html
+    AC_CHECK_LIB(X11, XKeysymToString)
+    dnl and GTK
     PKG_CHECK_MODULES([GTK], [gtk+-2.0])
+    dnl and GLIB
     PKG_CHECK_MODULES([GLIB], [glib-2.0])
     TME_HOSTS="${TME_HOSTS} gtk"
     AC_DEFINE(HAVE_GTK, [], [Define if you are compiling with GTK.])
