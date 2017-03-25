@@ -688,7 +688,7 @@ if test "x$gen_tmeconfig_h" = xyes; then
 
 TMEEOF
 
-  (for word in HAVE_ TIME_ PROTO_ ALIGNOF_ SIZEOF_ WORDS_BIGENDIAN; do \
+  (for word in HAVE_ TIME_ PROTO_ ALIGNOF_ SIZEOF_; do \
     grep $word config.h | sed 's/#define[ 	]\{1,\}/&_TME_/' ; \
   done) | sort | uniq >> ${outfile}-tmp
   grep FLOAT_FORMAT config.h | \
