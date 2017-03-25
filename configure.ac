@@ -36,7 +36,11 @@ AC_INIT([tme], [0.8])
 AC_CONFIG_SRCDIR([ic/m68k/m68k-impl.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([libltdl/config])
-AM_INIT_AUTOMAKE
+
+# requisite min versions
+AM_INIT_AUTOMAKE([1.11.1])
+AC_PREREQ([2.64])
+LT_PREREQ([2.2.6])
 
 
 dnl Write configuration out to config.h through config.h.in.
