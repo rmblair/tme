@@ -402,7 +402,7 @@ for system in $systems; do
     # the sun3:
     sun3)
 	machines="sun sun3"
-	ics="m68k isil7170 z8530 i825x6 ieee754 ncr5380"
+	ics="ieee754 m68k isil7170 z8530 i825x6 ncr5380"
 	buses="multibus"
 	fb_xlats="1152x900d1b1s0p32om 1152x900d8b8s0p32ommi8 1152x900d1b1s0p32omccmi8"
 	bus_size=32
