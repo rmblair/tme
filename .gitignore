@@ -30,6 +30,10 @@ m4/
 aclocal.m4
 autom4te.cache/
 libltdl/
+libtool
+config.h
+config.log
+config.status
 
 
 # generated from looking at libltdl/config.h
@@ -53,6 +57,8 @@ generic/float.lo
 generic/bus-device-auto.c
 generic/bus-device.lo
 libtme/memory-auto.h
+libtme/misc-host.c
+libtme/recode-host.c
 ic/m68k/m68k-auto.h
 ic/m68k/m68k-opmap.c
 ic/m68k/m68k-insns-auto.c
@@ -70,3 +76,4 @@ ic/sparc/sparc-insns-auto.c
 ic/sparc/sparc-vis-auto.c
 tme/recode-host.h
 tme/tme-plugins.txt
+tmesh/tmesh-input.c
