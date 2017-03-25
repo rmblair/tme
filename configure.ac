@@ -34,7 +34,7 @@ dnl POSSIBILITY OF SUCH DAMAGE.
 dnl Checks that we are given a good source directory.
 AC_INIT([tme], [0.8])
 AC_CONFIG_SRCDIR([ic/m68k/m68k-impl.h])
-AC_CONFIG_MACRO_DIR([m4],[libltdl/m4])
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([libltdl/config])
 AM_INIT_AUTOMAKE
 
