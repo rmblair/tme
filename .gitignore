@@ -1,0 +1,67 @@
+# objects
+*.o
+
+# libs
+*.so
+*.a
+
+# libtool
+*.lo
+*.la
+.libs/
+.deps/
+
+# autotools copies
+config.guess
+config.sub
+depcomp
+install-sh
+INSTALL
+ltmain.sh
+missing
+modules
+ylwrap
+
+# autotools-generated (both from Makefile.am + configure)
+Makefile
+Makefile.in
+stamp-h1
+
+# generated from looking at libltdl/config.h
+libtme/shlibvar.h
+
+# from configure
+tmeconfig.h
+config.h.in
+tme-preopen.txt
+
+# tme shell
+tmesh/tmesh
+
+# other generated
+machine/sun/tme-sun-eeprom
+machine/sun/tme-sun-idprom
+generic/fb-xlat-auto.c
+generic/fb.lo
+generic/float-auto.c
+generic/float.lo
+generic/bus-device-auto.c
+generic/bus-device.lo
+libtme/memory-auto.h
+ic/m68k/m68k-auto.h
+ic/m68k/m68k-opmap.c
+ic/m68k/m68k-insns-auto.c
+ic/m68k/m68k-bus-auto.c
+ic/m68k/m6888x-auto.c
+ic/ieee754/ieee754-auto.h
+ic/ieee754/ieee754-misc-auto.c
+ic/ieee754/ieee754-ops-auto.h
+ic/ieee754/ieee754-ops-auto.c
+ic/ieee754/ieee754-misc.lo
+ic/sparc/sparc-auto.h
+ic/sparc/sparc-bus-auto.c
+ic/sparc/sparc-fpu-auto.c
+ic/sparc/sparc-insns-auto.c
+ic/sparc/sparc-vis-auto.c
+tme/recode-host.h
+tme/tme-plugins.txt
