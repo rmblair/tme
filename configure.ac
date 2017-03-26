@@ -58,6 +58,7 @@ AC_HEADER_STDC
 AC_CHECK_HEADERS(unistd.h stdio.h memory.h stdarg.h limits.h float.h)
 AC_CHECK_HEADERS(sys/ioctl.h sys/sockio.h sys/socketio.h net/if_dl.h ioctls.h)
 AC_CHECK_HEADERS(sys/bswap.h)
+AC_CHECK_HEADERS(stdint.h)
 
 dnl Checks for typedefs, structures, and compiler characteristics.
 AC_C_BIGENDIAN
@@ -699,6 +700,10 @@ if test "x$gen_tmeconfig_h" = xyes; then
 #ifndef _TMECONFIG_H
 #define _TMECONFIG_H
 
+#include <stdint.h> /* req'd C99 types */
+
+#include <config.h> /* include autoconf's view of things */
+
 TMEEOF
 
   (for word in HAVE_ TIME_ PROTO_ ALIGNOF_ SIZEOF_; do \
@@ -718,27 +723,27 @@ TMEEOF
   if test $ac_cv_sizeof_long = 8; then
     echo '#define TME_HAVE_INT64_T' >> ${outfile}-tmp
     echo '#define _TME_PRI64 "l"' >> ${outfile}-tmp
-    echo 'typedef signed long tme_int64_t;' >> ${outfile}-tmp
-    echo 'typedef unsigned long tme_uint64_t;' >> ${outfile}-tmp
+    echo 'typedef int64_t tme_int64_t;' >> ${outfile}-tmp
+    echo 'typedef uint64_t tme_uint64_t;' >> ${outfile}-tmp
   fi
   if test $ac_cv_sizeof_int = 4; then
     echo '#define _TME_PRI32 ""' >> ${outfile}-tmp
-    echo 'typedef signed int tme_int32_t;' >> ${outfile}-tmp
-    echo 'typedef unsigned int tme_uint32_t;' >> ${outfile}-tmp
+    echo 'typedef int32_t tme_int32_t;' >> ${outfile}-tmp
+    echo 'typedef uint32_t tme_uint32_t;' >> ${outfile}-tmp
   elif test $ac_cv_sizeof_long = 4; then
     echo '#define _TME_PRI32 "l"' >> ${outfile}-tmp
-    echo 'typedef signed long tme_int32_t;' >> ${outfile}-tmp
-    echo 'typedef unsigned long tme_uint32_t;' >> ${outfile}-tmp
+    echo 'typedef int32_t tme_int32_t;' >> ${outfile}-tmp
+    echo 'typedef uint32_t tme_uint32_t;' >> ${outfile}-tmp
   fi
   if test $ac_cv_sizeof_int = 2; then
-    echo 'typedef signed int tme_int16_t;' >> ${outfile}-tmp
-    echo 'typedef unsigned int tme_uint16_t;' >> ${outfile}-tmp
+    echo 'typedef int16_t tme_int16_t;' >> ${outfile}-tmp
+    echo 'typedef uint16_t tme_uint16_t;' >> ${outfile}-tmp
   elif test $ac_cv_sizeof_short = 2; then
-    echo 'typedef signed short tme_int16_t;' >> ${outfile}-tmp
-    echo 'typedef unsigned short tme_uint16_t;' >> ${outfile}-tmp
+    echo 'typedef int16_t tme_int16_t;' >> ${outfile}-tmp
+    echo 'typedef uint16_t tme_uint16_t;' >> ${outfile}-tmp
   fi
-  echo 'typedef signed char tme_int8_t;' >> ${outfile}-tmp
-  echo 'typedef unsigned char tme_uint8_t;' >> ${outfile}-tmp
+  echo 'typedef int8_t tme_int8_t;' >> ${outfile}-tmp
+  echo 'typedef uint8_t tme_uint8_t;' >> ${outfile}-tmp
   cat <<TMEEOF >> ${outfile}-tmp
 
 /* features that aren't currently controlled by a configure option: */
