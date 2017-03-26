@@ -6,6 +6,7 @@ AUTOMAKE_OPTIONS = 1.4 gnu
 SUBDIRS = tme libltdl libtme generic ic machine host bus serial scsi tmesh tools
 EXTRA_DIST = modules dist
 noinst_DATA = tmeconfig.h
+DISTCLEANFILES = tmeconfig.h tme-preopen.txt
 
 # target to hook into the distribution:
 #
